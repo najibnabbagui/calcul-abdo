@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <!-- bootstrap link -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <script src="anime.min.js"></script>
+    <title>Calculatrice</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        border-radius: 10px;
+      }
+      body {
+        background-image: linear-gradient(#0f2027, #203a43, #2c5364);
+        background-size: 100%;
+        height: 100vh;
+      }
+      .container {
+        width: 200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #c3bebe;
+        padding: 10px;
+      }
+      #res {
+        width: 100%;
+        height: 50px;
+        font-size: 30px;
+        text-align: right;
+        margin-bottom: 10px;
+      }
+      .row {
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        margin-bottom: 10px;
+      }
+      .btn {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+        font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+      }
+      .btn-primary:hover {
+        background-color: #213f4c;
+        color: rgb(255, 255, 255);
+      }
+      input:hover {
+        font-family: "Courier New", Courier, monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <input type="text" name="res" id="res" readonly />
+      <div class="row">
+        <button class="btn btn-primary" id="7" onclick="addNum(this)">7</button>
+        <button class="btn btn-primary" id="8" >8</button>
+        <button class="btn btn-primary" id="9">9</button>
+        <button class="btn btn-primary" id="/">/</button>
+      </div>
+      <div class="row">
+        <button class="btn btn-primary" id="4">4</button>
+        <button class="btn btn-primary" id="5">5</button>
+        <button class="btn btn-primary" id="6">6</button>
+        <button class="btn btn-primary" id="*">*</button>
+      </div>
+      <div class="row">
+        <button class="btn btn-primary" id="1">1</button>
+        <button class="btn btn-primary" id="2">2</button>
+        <button class="btn btn-primary" id="3">3</button>
+        <button class="btn btn-primary" id="-">-</button>
+      </div>
+      <div class="row">
+        <button class="btn btn-primary" id="0">0</button>
+        <button class="btn btn-primary" id=".">.</button>
+        <button class="btn btn-success" id="=">=</button>
+        <button class="btn btn-primary" id="+">+</button>
+      </div>
+      <div class="row">
+        <button class="btn btn-danger" id="C">C</button>
+      </div>
+    </div>
+  </body>
+  <script>
+    let res = document.getElementById("res");
+    let btn = document.querySelectorAll(".btn");
+    let btnE = document.getElementById("=")
+    let btnC = document.getElementById("C")
+
+    function addNum(e){
+      res.value += e.innerText
+    }
+    btn.forEach((element) => {
+      element.onclick = function () {
+        res.value += element.innerText;
+      };
+    });
+
+    btnE.onclick = function () {
+      res.value = eval(res.value);
+    };
+    btnC.onclick = function () {
+      res.value = "";
+    };
+  </script>
+</html>
